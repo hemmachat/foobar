@@ -17,10 +17,31 @@ namespace FooBar
                 return false;
             }
 
+            if (x.Name == null || y.Name == null)
+            {
+                return false;
+            }
+
             return x.Type == y.Type &&
-                (x.Name.ToLower() == y.Name.ToLower() ||
-                x.AlternativeNames.Contains(y.Name.ToLower()) || 
-                y.AlternativeNames.Contains(x.Name.ToLower()));
+                (x.Name.ToLower() == y.Name.ToLower() || HasEqualAlternativeNames(x, y));
+        }
+
+        private bool HasEqualAlternativeNames(FooBar x, FooBar y)
+        {
+            var hasFirst = false;
+            var hasSecond = false;
+
+            if (y.AlternativeNames != null && y.AlternativeNames.Count != 0)
+            {
+                hasFirst = y.AlternativeNames.Contains(x.Name.ToLower());
+            }
+
+            if (x.AlternativeNames != null && x.AlternativeNames.Count != 0)
+            {
+                hasSecond = x.AlternativeNames.Contains(y.Name.ToLower());
+            }
+
+            return hasFirst || hasSecond;
         }
 
         public int GetHashCode(FooBar obj)

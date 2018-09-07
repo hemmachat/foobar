@@ -9,16 +9,11 @@ namespace FooBar
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("HEllo");
-            Console.ReadLine();
-
-            List<FooBar> externals = new List<FooBar>();
-            List<FooBar> internals = new List<FooBar>();
-
             var f1 = new FooBar()
             {
                 Name = "f1",
-                Type = FizzType.Five
+                Type = FizzType.Foo,
+                AlternativeNames = new List<string>() { "f2" }
             };
 
             var f2 = new FooBar()
@@ -30,6 +25,8 @@ namespace FooBar
             var comparer = new FooBarGenericComparer();
             var isEqual = comparer.Equals(f1, f2);
 
+            Console.WriteLine(isEqual);
+            Console.ReadLine();
         }
     }
 }
