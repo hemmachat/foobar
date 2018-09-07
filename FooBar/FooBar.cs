@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FooBar
 {
-    class FooBar
+    public class FooBar
     {
         /// <summary>
         /// Name of this object

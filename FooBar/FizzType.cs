@@ -7,7 +7,7 @@ namespace FooBar
     /// <summary>
     /// FooBar can be of 3 different types
     /// </summary>
-    enum FizzType
+    public enum FizzType
     {
         Foo,
         Five,
