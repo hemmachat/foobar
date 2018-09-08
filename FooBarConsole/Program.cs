@@ -4,6 +4,9 @@ using System.Text;
 using System.Collections;
 using Autofac;
 using FooBarConsole.Interfaces;
+using System.Configuration;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace FooBarConsole
 {
@@ -20,6 +23,14 @@ namespace FooBarConsole
 
             using (var scope = Container.BeginLifetimeScope())
             {
+                var internalFooBarFile = ConfigurationManager.AppSettings["InternalFooBarFile"];
+
+                using (StreamReader file = File.OpenText(internalFooBarFile))
+                {
+                    var internalFooBars = JsonConvert.DeserializeObject<List<FooBar>>(file.ReadToEnd());
+                }
+
+
                 var comparer = scope.Resolve<IFooBarComparer>();
                 var output = scope.Resolve<IOutput>();
 
