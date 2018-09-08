@@ -4,9 +4,7 @@ using System.Text;
 using System.Collections;
 using Autofac;
 using FooBarConsole.Interfaces;
-using System.Configuration;
-using System.IO;
-using Newtonsoft.Json;
+using FooBarConsole.Models;
 
 namespace FooBarConsole
 {
@@ -18,21 +16,20 @@ namespace FooBarConsole
         {   
             var builder = new ContainerBuilder();
             builder.RegisterType<FooBarGenericComparer>().As<IFooBarComparer>();
+            builder.RegisterType<FooBarInternalFileFetcher>().As<IFooBarInternalFetcher>();
+            builder.RegisterType<FooBarExternalUrlFetcher>().As<IFooBarExternalFetcher>();
             builder.RegisterType<ConsoleOutput>().As<IOutput>();
             Container = builder.Build();
 
             using (var scope = Container.BeginLifetimeScope())
             {
-                var internalFooBarFile = ConfigurationManager.AppSettings["InternalFooBarFile"];
-
-                using (StreamReader file = File.OpenText(internalFooBarFile))
-                {
-                    var internalFooBars = JsonConvert.DeserializeObject<List<FooBar>>(file.ReadToEnd());
-                }
-
-
+                var internalFetcher = scope.Resolve<IFooBarInternalFetcher>();
+                var externalFetcher = scope.Resolve<IFooBarExternalFetcher>();
                 var comparer = scope.Resolve<IFooBarComparer>();
                 var output = scope.Resolve<IOutput>();
+
+                var internalFooBars = internalFetcher.GetInternalFooBar();
+                var externalFooBars = externalFetcher.GetExternalFooBar();
 
                 var f1 = new FooBar()
                 {

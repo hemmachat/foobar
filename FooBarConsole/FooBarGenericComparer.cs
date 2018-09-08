@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using FooBarConsole.Interfaces;
+using FooBarConsole.Models;
 
 namespace FooBarConsole
 {

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace FooBarConsole
+namespace FooBarConsole.Models
 {
     public class FooBar : IFooBar
     {
