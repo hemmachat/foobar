@@ -15,7 +15,7 @@ namespace FooBarConsole
         static void Main(string[] args)
         {   
             var builder = new ContainerBuilder();
-            builder.RegisterType<FooBarGenericComparer>().As<IFooBarComparer>();
+            builder.RegisterType<FooBarTypeNameComparer>().As<IFooBarComparer>();
             builder.RegisterType<FooBarInternalFileFetcher>().As<IFooBarInternalFetcher>();
             builder.RegisterType<FooBarExternalUrlFetcher>().As<IFooBarExternalFetcher>();
             builder.RegisterType<ConsoleOutput>().As<IOutput>();
@@ -30,6 +30,9 @@ namespace FooBarConsole
 
                 var internalFooBars = internalFetcher.GetInternalFooBar();
                 var externalFooBars = externalFetcher.GetExternalFooBar();
+
+                var first = comparer.Equals(internalFooBars, externalFooBars);
+                output.ShowMessage(first.ToString());
 
                 var f1 = new FooBar()
                 {
@@ -48,7 +51,6 @@ namespace FooBarConsole
                 output.ShowMessage(isEqual.ToString());
                 Console.ReadLine();
             }
-            
         }
     }
 }

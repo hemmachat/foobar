@@ -3,6 +3,7 @@ using System.Configuration;
 using System.IO;
 using Newtonsoft.Json;
 using FooBarConsole.Models;
+using System;
 
 namespace FooBarConsole.Interfaces
 {
@@ -14,9 +15,16 @@ namespace FooBarConsole.Interfaces
         {
             var internalFooBarFile = ConfigurationManager.AppSettings[INTERNAL_FILE];
 
-            using (StreamReader file = File.OpenText(internalFooBarFile))
+            try
             {
-                return JsonConvert.DeserializeObject<List<FooBar>>(file.ReadToEnd());
+                using (StreamReader file = File.OpenText(internalFooBarFile))
+                {
+                    return JsonConvert.DeserializeObject<List<FooBar>>(file.ReadToEnd());
+                }
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
     }

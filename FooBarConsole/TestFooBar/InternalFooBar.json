@@ -5,9 +5,9 @@
     "type": "Foo"
   },
   {
-    "name": "f2",
-    "alternativeNames": [ "f1" ],
-    "id": 2,
-    "type": "Foo"
+    "name": "f3",
+    "id": 3,
+    "type": "Foo",
+    "alternativeNames": ["ff2", "f2"]
   }
 ]

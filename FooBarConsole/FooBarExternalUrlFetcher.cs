@@ -18,9 +18,16 @@ namespace FooBarConsole.Interfaces
 
             using (WebClient wc = new WebClient())
             {
-                var json = wc.DownloadString(externalFooBarUrl);
+                try
+                {
+                    var json = wc.DownloadString(externalFooBarUrl);
                 
-                return JsonConvert.DeserializeObject<List<FooBar>>(json);
+                    return JsonConvert.DeserializeObject<List<FooBar>>(json);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
         }
     }

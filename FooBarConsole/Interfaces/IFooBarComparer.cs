@@ -7,5 +7,6 @@ namespace FooBarConsole.Interfaces
 {
     public interface IFooBarComparer : IEqualityComparer<FooBar>
     {
+        bool Equals(List<FooBar> f1, List<FooBar> f2);
     }
 }
