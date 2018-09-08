@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using FooBarConsole.Interfaces;
 
-namespace FooBar
+namespace FooBarConsole
 {
     /// <summary>
     /// A generic FooBar comparer to check for equality using type, name and alternative name
     /// </summary>
-    public class FooBarGenericComparer : IEqualityComparer<FooBar>
+    public class FooBarGenericComparer : IFooBarComparer
     {
         public bool Equals(FooBar x, FooBar y)
         {

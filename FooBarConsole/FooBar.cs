@@ -1,10 +1,11 @@
-﻿using System;
+﻿using FooBarConsole.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace FooBar
+namespace FooBarConsole
 {
-    public class FooBar
+    public class FooBar : IFooBar
     {
         /// <summary>
         /// Name of this object

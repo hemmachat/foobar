@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FooBar
+namespace FooBarConsole
 {
     /// <summary>
     /// FooBar can be of 3 different types
