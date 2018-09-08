@@ -60,12 +60,12 @@ namespace FooBarConsole
 
             if (y.AlternativeNames != null && y.AlternativeNames.Count != 0)
             {
-                hasFirst = y.AlternativeNames.Contains(x.Name.ToLower());
+                hasFirst = y.AlternativeNames.Contains(x.Name, StringComparer.OrdinalIgnoreCase);
             }
 
             if (x.AlternativeNames != null && x.AlternativeNames.Count != 0)
             {
-                hasSecond = x.AlternativeNames.Contains(y.Name.ToLower());
+                hasSecond = x.AlternativeNames.Contains(y.Name, StringComparer.OrdinalIgnoreCase);
             }
 
             return hasFirst || hasSecond;

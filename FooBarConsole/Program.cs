@@ -5,6 +5,7 @@ using System.Collections;
 using Autofac;
 using FooBarConsole.Interfaces;
 using FooBarConsole.Models;
+using System.Linq;
 
 namespace FooBarConsole
 {
@@ -49,6 +50,7 @@ namespace FooBarConsole
 
                 var isEqual = comparer.Equals(f1, f2);
                 output.ShowMessage(isEqual.ToString());
+
                 Console.ReadLine();
             }
         }
