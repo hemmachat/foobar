@@ -4,6 +4,9 @@ using FooBarConsole.Interfaces;
 
 namespace FooBarConsole
 {
+    /// <summary>
+    /// Read file content from URL
+    /// </summary>
     public class UrlReader : IFileReader
     {
         private readonly IConfigurationReader _config;

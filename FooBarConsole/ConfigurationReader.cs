@@ -4,6 +4,9 @@ using System;
 
 namespace FooBarConsole
 {
+    /// <summary>
+    /// Read application configuration
+    /// </summary>
     public class ConfigurationReader : IConfigurationReader
     {
         private const string EXTERNAL_URL = "ExternalFooBarUrl";

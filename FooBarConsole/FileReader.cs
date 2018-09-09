@@ -4,6 +4,9 @@ using FooBarConsole.Interfaces;
 
 namespace FooBarConsole
 {
+    /// <summary>
+    /// Read file content
+    /// </summary>
     public class FileReader : IFileReader
     {
         private readonly IConfigurationReader _config;
