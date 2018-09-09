@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FooBarConsole.Models
 {
-    public class FooBar : IFooBar
+    public class FooBar
     {
         /// <summary>
         /// Name of this object
