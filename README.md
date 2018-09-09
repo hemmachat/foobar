@@ -13,4 +13,4 @@ I build .NET Core 2.0 Console application instead of building .NET Standard. .NE
 
 Application.cs is the main class to execute the task of comparing between two lists of FooBar and two individual FooBar just to show that the class TypeNameComparer.cs class is working and it will show "True" if both lists are equal. Most of the scenarios will be tested in the test cases.
 
-I use Autofac as the IoC Container, Moq for test mocking and xUnit as a testing framework and JSON.net for JSON manipulation.
+I use Autofac as the IoC Container, Moq for test mocking, xUnit as a testing framework and JSON.net for JSON manipulation.
