@@ -30,25 +30,24 @@ namespace FooBarConsole
                 var comparer = scope.Resolve<Interfaces.IComparer>();
                 var output = scope.Resolve<IOutput>();
 
+                // compare lists of internal and external FooBar
                 var internalFooBars = internalFetcher.GetInternalFooBar();
                 var externalFooBars = externalFetcher.GetExternalFooBar();
+                var listEqual = comparer.Equals(internalFooBars, externalFooBars);
+                output.ShowMessage(listEqual.ToString());
 
-                var first = comparer.Equals(internalFooBars, externalFooBars);
-                output.ShowMessage(first.ToString());
-
+                // compare individual FooBar
                 var f1 = new FooBar()
                 {
                     Name = "f1",
                     Type = FizzType.Foo,
                     AlternativeNames = new List<string>() { "f2" }
                 };
-
                 var f2 = new FooBar()
                 {
                     Name = "f2",
                     Type = FizzType.Foo
                 };
-
                 var isEqual = comparer.Equals(f1, f2);
                 output.ShowMessage(isEqual.ToString());
 

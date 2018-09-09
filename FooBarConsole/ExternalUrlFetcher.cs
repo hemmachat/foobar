@@ -12,7 +12,7 @@ namespace FooBarConsole
     public class ExternalUrlFetcher : IExternalFetcher
     {
         private readonly IConfigurationReader _config;
-        
+
         public ExternalUrlFetcher(IConfigurationReader config)
         {
             _config = config;
@@ -20,7 +20,6 @@ namespace FooBarConsole
 
         public List<FooBar> GetExternalFooBar()
         {
-
             using (WebClient wc = new WebClient())
             {
                 try
