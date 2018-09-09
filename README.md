@@ -1,10 +1,10 @@
 # FooBar
 
+I assume we are trying to compare two lists of FooBar. One externally from the URL and one from an internal file. I use JSON as the file format to be easily deserialised back to C# model class.
+
 I build .NET Core 2.0 Console application instead of building .NET Standard. .NET Standard is for building a library that can be used across platforms on .NET 4.7 or .NET Core. 
 
-.NET Standard is not an implementation, instead it is a contract between different .NET versions and different platforms for building library that targetting future .NET releases or cross platforms. Further refactoring can be made by splitting common classes into a .NET Standard library project for future sharing between different projects.
-
-I assume that we are trying to compare two lists of FooBar. One externally from the URL and one from an internal file. I use JSON as the file format to be easily deserialised back to C# model class.
+.NET Standard is not an implementation, instead it is a contract between different .NET versions and different platforms for building libraries that targetting future .NET releases or cross platforms. Further refactoring can be made by splitting common classes e.g. models, interfaces into a .NET Standard library project for future reusing and sharing between different projects.
 
 # Steps to run
 - Clone the repo using any git compatible client
