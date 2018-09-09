@@ -62,7 +62,7 @@ namespace FooBarConsole
             }
 
             return x.Type == y.Type &&
-                (x.Name.ToLower() == y.Name.ToLower() || HasEqualAlternativeNames(x, y));
+                (x.Name.Equals(y.Name, StringComparison.OrdinalIgnoreCase) || HasEqualAlternativeNames(x, y));
         }
 
         /// <summary>
