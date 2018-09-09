@@ -1,4 +1,4 @@
-namespace FooBarConsole
+namespace FooBarConsole.Interfaces
 {
     public interface IApplication
     {

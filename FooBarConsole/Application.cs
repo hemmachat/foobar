@@ -41,6 +41,9 @@ namespace FooBarConsole
             };
             var isEqual = _comparer.Equals(f1, f2);
             _output.ShowMessage(isEqual.ToString());
+
+            // put this line to show the output to users
+            Console.ReadLine();
         }
     }
 }
