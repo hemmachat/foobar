@@ -20,6 +20,10 @@ namespace FooBarConsole
             }            
         }
 
+        /// <summary>
+        /// Configure all necessary classes for the application
+        /// </summary>
+        /// <returns></returns>
         public static IContainer ConfigureContainer()
         {
             var builder = new ContainerBuilder();

@@ -12,6 +12,10 @@ namespace FooBarConsole
         private const string EXTERNAL_URL = "ExternalFooBarUrl";
         private const string INTERNAL_FILE = "InternalFooBarFile";
 
+        /// <summary>
+        /// Fetch external URL
+        /// </summary>
+        /// <returns>URL of the external FooBar</returns>
         public string GetExternalUrl()
         {
             try
@@ -24,6 +28,10 @@ namespace FooBarConsole
             }
         }
 
+        /// <summary>
+        /// Fetch internal file path
+        /// </summary>
+        /// <returns>Path of the internal FooBar file</returns>
         public string GetInternalFile()
         {
             try

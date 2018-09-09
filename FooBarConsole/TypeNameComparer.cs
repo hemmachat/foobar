@@ -12,6 +12,12 @@ namespace FooBarConsole
     /// </summary>
     public class TypeNameComparer : IComparer
     {
+        /// <summary>
+        /// Check two lists of FooBar if they are equal in type, name or alternative name
+        /// </summary>
+        /// <param name="f1">First FooBar</param>
+        /// <param name="f2">Second FooBar</param>
+        /// <returns>True if they are equal</returns>
         public bool Equals(List<FooBar> f1, List<FooBar> f2)
         {
             if (f1 == null || f2 == null) 
@@ -53,6 +59,12 @@ namespace FooBarConsole
                 (x.Name.ToLower() == y.Name.ToLower() || HasEqualAlternativeNames(x, y));
         }
 
+        /// <summary>
+        /// Check for an equal alternative names
+        /// </summary>
+        /// <param name="x">First FooBar</param>
+        /// <param name="y">Second FooBar</param>
+        /// <returns>True if there is a match name</returns>
         private bool HasEqualAlternativeNames(FooBar x, FooBar y)
         {
             var hasFirst = false;

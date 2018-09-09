@@ -8,6 +8,9 @@ using FooBarConsole.Interfaces;
 
 namespace FooBarConsole
 {
+    /// <summary>
+    /// Fetch internal list of FooBar
+    /// </summary>
     public class InternalFileFetcher : IInternalFetcher
     {
         private readonly IFileReader _reader;

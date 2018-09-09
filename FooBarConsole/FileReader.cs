@@ -16,6 +16,10 @@ namespace FooBarConsole
             _config = config;
         }
 
+        /// <summary>
+        /// Read the file based on application configuration
+        /// </summary>
+        /// <returns>File content</returns>
         public string ReadFile()
         {
             try

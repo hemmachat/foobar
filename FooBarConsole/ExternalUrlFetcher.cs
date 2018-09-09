@@ -9,6 +9,9 @@ using FooBarConsole.Interfaces;
 
 namespace FooBarConsole
 {
+    /// <summary>
+    /// Fetch external URL list of FooBar
+    /// </summary>
     public class ExternalUrlFetcher : IExternalFetcher
     {
         private readonly IFileReader _reader;

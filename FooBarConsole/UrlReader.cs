@@ -5,7 +5,7 @@ using FooBarConsole.Interfaces;
 namespace FooBarConsole
 {
     /// <summary>
-    /// Read file content from URL
+    /// Read file content from an URL
     /// </summary>
     public class UrlReader : IFileReader
     {
@@ -16,6 +16,10 @@ namespace FooBarConsole
             _config = config;
         }
 
+        /// <summary>
+        /// Read URL file based on application configuration
+        /// </summary>
+        /// <returns>File content</returns>
         public string ReadFile()
         {
             try
