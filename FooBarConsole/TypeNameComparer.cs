@@ -43,6 +43,12 @@ namespace FooBarConsole
             return true;
         }
 
+        /// <summary>
+        /// Compare two FooBars if they are equal
+        /// </summary>
+        /// <param name="x">First FooBar</param>
+        /// <param name="y">Second FooBar</param>
+        /// <returns>True if they are equal</returns>
         public bool Equals(FooBar x, FooBar y)
         {
             if (x == null || y == null)
