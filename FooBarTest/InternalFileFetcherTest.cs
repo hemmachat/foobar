@@ -12,20 +12,33 @@ namespace FooBarTest
 {
     public class InternalFileFetcherTest
     {
-        private readonly Mock<IConfigurationReader> _config;
+        private readonly Mock<IFileReader> _reader;
         private readonly InternalFileFetcher _fetcher;
 
         public InternalFileFetcherTest()
         {
             var factory = new MockRepository(MockBehavior.Loose);
-            _config = factory.Create<IConfigurationReader>();
-            _fetcher = new InternalFileFetcher(_config.Object);
+            _reader = factory.Create<IFileReader>();
+            _fetcher = new InternalFileFetcher(_reader.Object);
         }
 
         [Fact]
         public void List_Parse_Valid()
         {
-            _config.Setup(_ => _.GetInternalFile()).Returns("InternalFooBar.json");
+            var content = @"[
+                {
+                    'name': 'f1',
+                    'id': 1,
+                    'type': 'Foo'
+                },
+                {
+                    'name': 'f3',
+                    'id': 3,
+                    'type': 'Foo',
+                    'alternativeNames': ['ff2', 'f2']
+                }
+                ]";
+            _reader.Setup(_ => _.ReadFile()).Returns(content);
 
             var foos = _fetcher.GetInternalFooBar();
 

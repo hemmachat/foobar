@@ -18,6 +18,8 @@ namespace FooBarConsole
             var builder = new ContainerBuilder();
             builder.RegisterType<TypeNameComparer>().As<Interfaces.IComparer>();
             builder.RegisterType<ConfigurationReader>().As<IConfigurationReader>();
+            builder.RegisterType<FileReader>().As<IFileReader>();
+            builder.RegisterType<UrlReader>().As<IFileReader>();            
             builder.RegisterType<InternalFileFetcher>().As<IInternalFetcher>();
             builder.RegisterType<ExternalUrlFetcher>().As<IExternalFetcher>();
             builder.RegisterType<ConsoleOutput>().As<IOutput>();
@@ -40,8 +42,7 @@ namespace FooBarConsole
                 var f1 = new FooBar()
                 {
                     Name = "f1",
-                    Type = FizzType.Foo,
-                    AlternativeNames = new List<string>() { "f2" }
+                    AlternativeNames = new List<string>() { "fff4", "f2" }
                 };
                 var f2 = new FooBar()
                 {

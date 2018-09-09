@@ -10,21 +10,18 @@ namespace FooBarConsole
 {
     public class InternalFileFetcher : IInternalFetcher
     {
-        private readonly IConfigurationReader _config;
+        private readonly IFileReader _reader;
 
-        public InternalFileFetcher(IConfigurationReader config) 
+        public InternalFileFetcher(IFileReader reader) 
         {
-            _config = config;
+            _reader = reader;
         }
 
         public List<FooBar> GetInternalFooBar()
         {
             try
             {
-                using (StreamReader file = File.OpenText(_config.GetInternalFile()))
-                {
-                    return JsonConvert.DeserializeObject<List<FooBar>>(file.ReadToEnd());
-                }
+                return JsonConvert.DeserializeObject<List<FooBar>>(_reader.ReadFile());
             }
             catch (Exception)
             {

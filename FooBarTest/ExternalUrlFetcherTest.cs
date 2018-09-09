@@ -12,20 +12,33 @@ namespace FooBarTest
 {
     public class ExternalUrlFetcherTest
     {
-        private readonly Mock<IConfigurationReader> _config;
+        private readonly Mock<IFileReader> _reader;
         private readonly ExternalUrlFetcher _fetcher;
 
         public ExternalUrlFetcherTest()
         {
             var factory = new MockRepository(MockBehavior.Loose);
-            _config = factory.Create<IConfigurationReader>();
-            _fetcher = new ExternalUrlFetcher(_config.Object);
+            _reader = factory.Create<IFileReader>();
+            _fetcher = new ExternalUrlFetcher(_reader.Object);
         }
 
         [Fact]
         public void List_Parse_Valid()
         {
-            _config.Setup(_ => _.GetExternalUrl()).Returns("https://raw.githubusercontent.com/hemmachat/foobar/master/FooBarConsole/TestFooBar/ExternalFooBar.json");
+            var content = @"[
+                {
+                    'name': 'f1',
+                    'id': 1,
+                    'type': 'Foo'
+                },
+                {
+                    'name': 'f3',
+                    'id': 3,
+                    'type': 'Foo',
+                    'alternativeNames': ['ff2', 'f2']
+                }
+                ]";
+            _reader.Setup(_ => _.ReadFile()).Returns(content);
 
             var foos = _fetcher.GetExternalFooBar();
 

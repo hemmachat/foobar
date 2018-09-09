@@ -11,27 +11,22 @@ namespace FooBarConsole
 {
     public class ExternalUrlFetcher : IExternalFetcher
     {
-        private readonly IConfigurationReader _config;
+        private readonly IFileReader _reader;
 
-        public ExternalUrlFetcher(IConfigurationReader config)
+        public ExternalUrlFetcher(IFileReader reader)
         {
-            _config = config;
+            _reader = reader;
         }
 
         public List<FooBar> GetExternalFooBar()
         {
-            using (WebClient wc = new WebClient())
+            try
             {
-                try
-                {
-                    var json = wc.DownloadString(_config.GetExternalUrl());
-                
-                    return JsonConvert.DeserializeObject<List<FooBar>>(json);
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
+                return JsonConvert.DeserializeObject<List<FooBar>>(_reader.ReadFile());
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
     }

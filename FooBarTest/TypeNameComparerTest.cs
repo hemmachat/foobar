@@ -348,6 +348,22 @@ namespace FooBarTest
         }
 
         [Fact]
+        public void Match_Name_Default_Type_Valid()
+        {
+            var f1 = new FooBar()
+            {
+                Name = "f1"
+            };
+
+            var f2 = new FooBar()
+            {
+                Name = "f1"
+            };
+
+            Assert.True(_comparer.Equals(f1, f2));
+        }
+
+        [Fact]
         public void Match_Name_Type_Case_Valid()
         {
             var f1 = new FooBar()
@@ -447,6 +463,23 @@ namespace FooBarTest
             {
                 Name = "f1",
                 Type = FizzType.Foo
+            };
+
+            var f2 = new FooBar()
+            {
+                Name = "f1",
+                Type = FizzType.Five
+            };
+
+            Assert.False(_comparer.Equals(f1, f2));
+        }
+
+        [Fact]
+        public void Unmatch_Default_Type_Invalid()
+        {
+            var f1 = new FooBar()
+            {
+                Name = "f1"
             };
 
             var f2 = new FooBar()
