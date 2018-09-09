@@ -16,17 +16,18 @@ namespace FooBarConsole
         static void Main(string[] args)
         {   
             var builder = new ContainerBuilder();
-            builder.RegisterType<FooBarTypeNameComparer>().As<IFooBarComparer>();
-            builder.RegisterType<FooBarInternalFileFetcher>().As<IFooBarInternalFetcher>();
-            builder.RegisterType<FooBarExternalUrlFetcher>().As<IFooBarExternalFetcher>();
+            builder.RegisterType<TypeNameComparer>().As<Interfaces.IComparer>();
+            builder.RegisterType<ConfigurationReader>().As<IConfigurationReader>();
+            builder.RegisterType<InternalFileFetcher>().As<IInternalFetcher>();
+            builder.RegisterType<ExternalUrlFetcher>().As<IExternalFetcher>();
             builder.RegisterType<ConsoleOutput>().As<IOutput>();
             Container = builder.Build();
 
             using (var scope = Container.BeginLifetimeScope())
             {
-                var internalFetcher = scope.Resolve<IFooBarInternalFetcher>();
-                var externalFetcher = scope.Resolve<IFooBarExternalFetcher>();
-                var comparer = scope.Resolve<IFooBarComparer>();
+                var internalFetcher = scope.Resolve<IInternalFetcher>();
+                var externalFetcher = scope.Resolve<IExternalFetcher>();
+                var comparer = scope.Resolve<Interfaces.IComparer>();
                 var output = scope.Resolve<IOutput>();
 
                 var internalFooBars = internalFetcher.GetInternalFooBar();

@@ -3,7 +3,7 @@ using FooBarConsole.Models;
 
 namespace FooBarConsole.Interfaces
 {
-    public interface IFooBarInternalFetcher
+    public interface IInternalFetcher
     {
          List<FooBar> GetInternalFooBar();
     }

@@ -5,22 +5,27 @@ using System.Net;
 using System.Text;
 using Newtonsoft.Json;
 using FooBarConsole.Models;
+using FooBarConsole.Interfaces;
 
-namespace FooBarConsole.Interfaces
+namespace FooBarConsole
 {
-    public class FooBarExternalUrlFetcher : IFooBarExternalFetcher
+    public class ExternalUrlFetcher : IExternalFetcher
     {
-        private const string EXTERNAL_URL = "ExternalFooBarUrl";
+        private readonly IConfigurationReader _config;
+        
+        public ExternalUrlFetcher(IConfigurationReader config)
+        {
+            _config = config;
+        }
 
         public List<FooBar> GetExternalFooBar()
         {
-            var externalFooBarUrl = ConfigurationManager.AppSettings[EXTERNAL_URL];
 
             using (WebClient wc = new WebClient())
             {
                 try
                 {
-                    var json = wc.DownloadString(externalFooBarUrl);
+                    var json = wc.DownloadString(_config.GetExternalUrl());
                 
                     return JsonConvert.DeserializeObject<List<FooBar>>(json);
                 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FooBarConsole
 {
-    public class ConsoleOutput : IConsoleOutput
+    public class ConsoleOutput : IOutput
     {
         public void ShowMessage(string message)
         {

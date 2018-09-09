@@ -4,20 +4,24 @@ using System.IO;
 using Newtonsoft.Json;
 using FooBarConsole.Models;
 using System;
+using FooBarConsole.Interfaces;
 
-namespace FooBarConsole.Interfaces
+namespace FooBarConsole
 {
-    public class FooBarInternalFileFetcher : IFooBarInternalFetcher
+    public class InternalFileFetcher : IInternalFetcher
     {
-        private const string INTERNAL_FILE = "InternalFooBarFile";
+        private readonly IConfigurationReader _config;
+
+        public InternalFileFetcher(IConfigurationReader config) 
+        {
+            _config = config;
+        }
 
         public List<FooBar> GetInternalFooBar()
         {
-            var internalFooBarFile = ConfigurationManager.AppSettings[INTERNAL_FILE];
-
             try
             {
-                using (StreamReader file = File.OpenText(internalFooBarFile))
+                using (StreamReader file = File.OpenText(_config.GetInternalFile()))
                 {
                     return JsonConvert.DeserializeObject<List<FooBar>>(file.ReadToEnd());
                 }

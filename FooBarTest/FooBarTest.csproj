@@ -16,5 +16,11 @@
   <ItemGroup>
     <ProjectReference Include="..\FooBarConsole\FooBarConsole.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <None Update="InternalFooBar.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
 </Project>

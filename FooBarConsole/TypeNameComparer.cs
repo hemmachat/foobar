@@ -10,7 +10,7 @@ namespace FooBarConsole
     /// <summary>
     /// A generic FooBar comparer to check for equality using type, name and alternative name
     /// </summary>
-    public class FooBarTypeNameComparer : IFooBarComparer
+    public class TypeNameComparer : IComparer
     {
         public bool Equals(List<FooBar> f1, List<FooBar> f2)
         {

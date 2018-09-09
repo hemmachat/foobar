@@ -5,7 +5,7 @@ using FooBarConsole.Models;
 
 namespace FooBarConsole.Interfaces
 {
-    public interface IFooBarExternalFetcher
+    public interface IExternalFetcher
     {
         List<FooBar> GetExternalFooBar();
     }
