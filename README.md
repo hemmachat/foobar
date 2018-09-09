@@ -6,9 +6,11 @@ I build .NET Core 2.0 Console application instead of building .NET Standard. .NE
 
 I assume that we are trying to compare two lists of FooBar. One externally from the URL and one from an internal file. I use JSON as the file format to be easily deserialised back to C# model class.
 
-- To run the application, use Visual Studio 2017 or on the .net core command line, run `dotnet run`
-- To run the test cases, use Visual Studio 2017 Test Executable or on the .net core command line, run `dotnet test`
+# Steps to run
+- Clone the repo using any git compatible client
+- Use Visual Studio 2017 to open the solution and run it or on the .net core command line, run `dotnet run`
+- To run the test cases, use Visual Studio 2017 Test Explorer or on the .net core command line, run `dotnet test`
 
-Application.cs is an executable class to execute the task of comparing between two lists of FooBar and two individual FooBar just to show that the class TypeNameComparer.cs class is working and it will show "True" if both lists are equal. Most of the scenarios will be tested in the test cases.
+Application.cs is the main class to execute the task of comparing between two lists of FooBar and two individual FooBar just to show that the class TypeNameComparer.cs class is working and it will show "True" if both lists are equal. Most of the scenarios will be tested in the test cases.
 
 I use Autofac as the IoC Container, Moq for test mocking and xUnit as a testing framework.
